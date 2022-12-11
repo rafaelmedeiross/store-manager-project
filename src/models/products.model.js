@@ -10,7 +10,6 @@ const getProductById = async (productId) => {
     'SELECT * FROM StoreManager.products WHERE id = ?',
     [productId],
   );
-  console.log(productId);
   return result;
 };
 
