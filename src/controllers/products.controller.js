@@ -17,6 +17,7 @@ const getProductById = async (req, res) => {
 const postProduct = async (req, res) => {
   const { name } = req.body;
   const { message } = await productsService.postProduct(name);
+  if (typeof (message) === 'string') return res.status(404).json({ message });
   return res.status(201).json(message);
 };
 
