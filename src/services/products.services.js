@@ -11,7 +11,14 @@ const getProductById = async (productId) => {
   return { message: selectedProduct };
 };
 
+const postProduct = async (name) => {
+  const productId = await productsModel.postProduct(name);
+  const product = await productsModel.getProductById(productId);
+  return { message: product };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
+  postProduct,
 };
