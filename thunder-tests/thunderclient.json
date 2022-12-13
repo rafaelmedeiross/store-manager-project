@@ -70,11 +70,11 @@
     "colId": "4ddb8745-b0f9-4393-90a2-4edd9a912054",
     "containerId": "",
     "name": "getSales",
-    "url": "http://localhost:3000/sales/10",
+    "url": "http://localhost:3000/sales/1",
     "method": "GET",
     "sortNum": 60000,
     "created": "2022-12-13T00:54:35.454Z",
-    "modified": "2022-12-13T01:51:38.813Z",
+    "modified": "2022-12-13T09:42:15.867Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -96,6 +96,20 @@
       "raw": "{\n  \"name\": \"Martelo do thor\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "c42b381f-bffa-4aee-8142-48ba1c58234a",
+    "colId": "4ddb8745-b0f9-4393-90a2-4edd9a912054",
+    "containerId": "",
+    "name": "deleteSale",
+    "url": "http://localhost:3000/sales/2",
+    "method": "DELETE",
+    "sortNum": 80000,
+    "created": "2022-12-13T10:20:10.521Z",
+    "modified": "2022-12-13T10:26:35.122Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
