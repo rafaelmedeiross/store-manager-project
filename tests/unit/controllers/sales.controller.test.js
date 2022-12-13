@@ -40,4 +40,14 @@ describe('Testes de sales.controller', function () {
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(resolvedValue);
   });
+  it('teste se a venda é retornada', async function () {
+    const res = {};
+    const req = { params: { id: 1 } };
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    sinon.stub(salesServices, "getSaleById").resolves({ message: resolvedValue[0] });
+    await salesController.getSaleById(req, res);
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(resolvedValue[0]);
+  });
 })

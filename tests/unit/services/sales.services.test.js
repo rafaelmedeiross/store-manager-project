@@ -47,11 +47,35 @@ const resolvedValue2 = [
   }
 ];
 
+const resolvedValue3 = [
+  {
+    date: '2022-12-13T12:25:27.000Z',
+    product_id: 1,
+    quantity: 5
+  },
+  {
+    date: '2022-12-13T12:25:27.000Z',
+    product_id: 2,
+    quantity: 10
+  }
+];
+
+const resolvedValue4 = [
+  { date: '2022-12-13T12:25:27.000Z', productId: 1, quantity: 5 },
+  { date: '2022-12-13T12:25:27.000Z', productId: 2, quantity: 10 }
+];
+
+
 describe('Testes de sales.services', function () {
   afterEach(sinon.restore);
   it('teste se as vendas sao retornadas', async function () {
     sinon.stub(salesModel, "getAllSales").resolves(resolvedValue2);
     const getSales = await salesServices.getAllSales();
     expect(getSales.message).to.be.deep.equal(resolvedValue);
+  });
+  it('teste se uma venda especifica é encontrado', async function () {
+    sinon.stub(salesModel, "getSaleById").resolves(resolvedValue3);
+    const getSale = await salesServices.getSaleById(2);
+    expect(getSale.message).to.be.deep.equal(resolvedValue4);
   });
 })

@@ -24,7 +24,7 @@ const getSaleById = async (saleId) => {
       productId: sale.product_id,
       quantity: sale.quantity,
     }
-  ));
+    ));
   return { message: convertedselectedSale };
 };
 
