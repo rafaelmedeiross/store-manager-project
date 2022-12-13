@@ -19,6 +19,14 @@ const updateProductById = async (productId, name) => {
   return { message: updatedProduct };
 };
 
+const deleteProductById = async (productId) => {
+  const selectedProduct = await productsModel.getProductById(productId);
+  if (!selectedProduct) return { message: 'Product not found' };
+  await productsModel.deleteProductById(productId);
+  const deletedProduct = await productsModel.getProductById(productId);
+  return { message: deletedProduct };
+};
+
 const postProduct = async (name) => {
   const productId = await productsModel.postProduct(name);
   const product = await productsModel.getProductById(productId);
@@ -30,4 +38,5 @@ module.exports = {
   getProductById,
   postProduct,
   updateProductById,
+  deleteProductById,
 };

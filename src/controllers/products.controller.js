@@ -13,6 +13,7 @@ const getProductById = async (req, res) => {
   if (typeof (message) === 'string') return res.status(404).json({ message });
    return res.status(200).json(message);
 };
+
 const updateProductById = async (req, res) => {
   const { id } = req.params;
   const convertedId = Number(id);
@@ -20,6 +21,14 @@ const updateProductById = async (req, res) => {
   const { message } = await productsService.updateProductById(convertedId, name);
   if (typeof (message) === 'string') return res.status(404).json({ message });
   return res.status(200).json(message);
+};
+
+const deleteProductById = async (req, res) => {
+  const { id } = req.params;
+  const convertedId = Number(id);
+  const { message } = await productsService.deleteProductById(convertedId);
+  if (typeof (message) === 'string') return res.status(404).json({ message });
+  return res.status(204).json(message);
 };
 
 const postProduct = async (req, res) => {
@@ -34,4 +43,5 @@ module.exports = {
   getAllProducts,
   getProductById,
   updateProductById,
+  deleteProductById,
 };
