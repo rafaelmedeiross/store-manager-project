@@ -5,10 +5,13 @@ const salesController = require('../controllers/sales.controller');
 const salesMiddleware = require('../middlewares/sales.middleware');
 
 const route = express.Router();
-
+// product.route
 route.get('/products', productsController.getAllProducts);
 route.post('/products', productMiddleware.verifier, productsController.postProduct);
-route.post('/sales', salesMiddleware.verifier, salesController.postSales);
 route.get('/products/:id', productsController.getProductById);
+// sale.route
+route.get('/sales', salesController.getAllSales);
+route.get('/sales/:id', salesController.getSaleById);
+route.post('/sales', salesMiddleware.verifier, salesController.postSales);
 
 module.exports = route;
