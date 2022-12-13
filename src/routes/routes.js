@@ -6,11 +6,13 @@ const salesMiddleware = require('../middlewares/sales.middleware');
 
 const route = express.Router();
 // product.route
+route.get('/products/search', productsController.searchProducts);
 route.get('/products', productsController.getAllProducts);
 route.post('/products', productMiddleware.verifier, productsController.postProduct);
 route.get('/products/:id', productsController.getProductById);
 route.put('/products/:id', productMiddleware.verifier, productsController.updateProductById);
 route.delete('/products/:id', productsController.deleteProductById);
+
 // sale.route
 route.get('/sales', salesController.getAllSales);
 route.get('/sales/:id', salesController.getSaleById);

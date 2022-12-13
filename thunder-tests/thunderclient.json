@@ -111,5 +111,25 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "8df302d2-1199-4246-a4a5-14a899b719f7",
+    "colId": "4ddb8745-b0f9-4393-90a2-4edd9a912054",
+    "containerId": "",
+    "name": "searchProducts",
+    "url": "http://localhost:3000/products/search?q=mart",
+    "method": "GET",
+    "sortNum": 90000,
+    "created": "2022-12-13T11:53:18.087Z",
+    "modified": "2022-12-13T12:22:57.179Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "q",
+        "value": "mart",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
