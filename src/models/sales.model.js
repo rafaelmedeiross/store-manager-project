@@ -27,10 +27,11 @@ const getSaleById = async (saleId) => {
 };
 
 const deleteSaleById = async (saleId) => {
-  await connection.execute(
+  const [{ affectedRows }] = await connection.execute(
     'DELETE FROM StoreManager.sales WHERE id = ?',
     [saleId],
   );
+  return affectedRows;
 };
 
 const postSales = async (sales) => {
