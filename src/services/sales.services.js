@@ -11,6 +11,7 @@ const getAllSales = async () => {
       quantity: sale.quantity,
     }
   ));
+  console.log(allSales);
   return { message: convertedAllSales };
 };
 
