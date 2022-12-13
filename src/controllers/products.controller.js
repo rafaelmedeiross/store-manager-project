@@ -13,6 +13,14 @@ const getProductById = async (req, res) => {
   if (typeof (message) === 'string') return res.status(404).json({ message });
    return res.status(200).json(message);
 };
+const updateProductById = async (req, res) => {
+  const { id } = req.params;
+  const convertedId = Number(id);
+  const { name } = req.body;
+  const { message } = await productsService.updateProductById(convertedId, name);
+  if (typeof (message) === 'string') return res.status(404).json({ message });
+  return res.status(200).json(message);
+};
 
 const postProduct = async (req, res) => {
   const { name } = req.body;
@@ -25,4 +33,5 @@ module.exports = {
   postProduct,
   getAllProducts,
   getProductById,
+  updateProductById,
 };

@@ -9,6 +9,8 @@ const route = express.Router();
 route.get('/products', productsController.getAllProducts);
 route.post('/products', productMiddleware.verifier, productsController.postProduct);
 route.get('/products/:id', productsController.getProductById);
+route.put('/products/:id', productMiddleware.verifier, productsController.updateProductById);
+
 // sale.route
 route.get('/sales', salesController.getAllSales);
 route.get('/sales/:id', salesController.getSaleById);
