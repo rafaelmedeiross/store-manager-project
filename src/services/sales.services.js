@@ -32,7 +32,7 @@ const deleteSaleById = async (saleId) => {
   const selectedSale = await salesModel.getSaleById(saleId);
   if (!(selectedSale.length)) return { message: 'Sale not found' };
   await salesModel.deleteSaleById(saleId);
-  const deletedSale = await salesModel.getSaleById(saleId);
+  // const deletedSale = await salesModel.getSaleById(saleId);
   // const convertedDeletedSale = deletedSale.map((sale) => (
   //   {
   //     date: sale.date,
@@ -40,7 +40,7 @@ const deleteSaleById = async (saleId) => {
   //     quantity: sale.quantity,
   //   }
   // ));
-  return { message: deletedSale };
+  // return { message: deletedSale };
 };
 
 const postSales = async (sales) => {

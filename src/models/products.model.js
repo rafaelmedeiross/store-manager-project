@@ -21,17 +21,19 @@ const searchProducts = async (q) => {
 };
 
 const updateProductById = async (productId, name) => {
-   await connection.execute(
+   const [{ changedRows }] = await connection.execute(
     'UPDATE StoreManager.products SET name = ? WHERE id = ?',
     [name, productId],
-  );
+   );
+  return changedRows;
 };
 
 const deleteProductById = async (productId) => {
-  await connection.execute(
+  const [{ affectedRows }] = await connection.execute(
     'DELETE FROM StoreManager.products  WHERE id = ?',
     [productId],
   );
+  return affectedRows;
 };
 
 const postProduct = async (product) => {

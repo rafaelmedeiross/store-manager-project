@@ -78,4 +78,11 @@ describe('Testes de sales.services', function () {
     const getSale = await salesServices.getSaleById(2);
     expect(getSale.message).to.be.deep.equal(resolvedValue4);
   });
+  it('teste se uma venda especifica é deletada', async function () {
+    sinon.stub(salesModel, "getSaleById").resolves(resolvedValue3);
+    sinon.stub(salesModel, "deleteSaleById").resolves(1);
+    const getDeletedSale = await salesServices.deleteSaleById(1);
+    expect(getDeletedSale).to.be.equal(undefined);
+  });
+
 })
