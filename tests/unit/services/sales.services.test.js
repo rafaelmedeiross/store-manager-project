@@ -82,7 +82,7 @@ describe('Testes de sales.services', function () {
     sinon.stub(salesModel, "getSaleById").resolves(resolvedValue3);
     sinon.stub(salesModel, "deleteSaleById").resolves(1);
     const getDeletedSale = await salesServices.deleteSaleById(1);
-    expect(getDeletedSale).to.be.equal(undefined);
+    expect(getDeletedSale.message).to.be.equal(undefined);
   });
 
 })

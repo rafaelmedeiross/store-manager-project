@@ -44,9 +44,22 @@ const postSales = async (sales) => {
   return insertId;
 };
 
+const updateSaleById = async (convertedId, sales) => {
+  console.log(sales);
+    await Promise.all(sales.map(async (sale) => {
+      await connection.execute(
+        `UPDATE StoreManager.sales_products SET quantity = ?
+          WHERE sale_id = ?
+          AND product_id = ?`,
+            [sale.quantity, convertedId, sale.productId],
+      );
+  }));
+};
+
 module.exports = {
   getAllSales,
   getSaleById,
   postSales,
   deleteSaleById,
+  updateSaleById,
 };

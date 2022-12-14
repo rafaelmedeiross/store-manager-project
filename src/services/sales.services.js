@@ -40,8 +40,20 @@ const deleteSaleById = async (saleId) => {
   //     quantity: sale.quantity,
   //   }
   // ));
-  // return { message: deletedSale };
+  return { message: undefined };
 };
+
+const updateSaleById = async (convertedId, saleToBeUpdated) => {
+  const selectedSale = await salesModel.getSaleById(convertedId);
+  console.log(selectedSale);
+  if (!selectedSale.length) return { message: 'Sale not found' };
+  const productCheck = await Promise.all(saleToBeUpdated
+    .map(async ({ productId }) => productModel.getProductById(productId)));
+  const productValidation = productCheck.some((product) => !product);
+  if (productValidation) return { message: 'Product not found' };
+  const updatedSale = await salesModel.updateSaleById(convertedId, saleToBeUpdated);
+  return { message: updatedSale };
+}; 
 
 const postSales = async (sales) => {
   const productCheck = await Promise.all(sales
@@ -57,4 +69,5 @@ module.exports = {
   getSaleById,
   postSales,
   deleteSaleById,
+  updateSaleById,
 };

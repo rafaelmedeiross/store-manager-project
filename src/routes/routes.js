@@ -18,5 +18,6 @@ route.get('/sales', salesController.getAllSales);
 route.get('/sales/:id', salesController.getSaleById);
 route.post('/sales', salesMiddleware.verifier, salesController.postSales);
 route.delete('/sales/:id', salesController.deleteSaleById);
+route.put('/sales/:id', salesMiddleware.verifier, salesController.updateSaleById);
 
 module.exports = route;

@@ -32,9 +32,23 @@ const deleteSaleById = async (req, res) => {
   return res.status(204).json(message);
 };
 
+const updateSaleById = async (req, res) => {
+  const { body } = req;
+  const { id } = req.params;
+  const convertedId = Number(id);
+  const { message } = await salesService.updateSaleById(convertedId, body);
+  if (typeof (message) === 'string') return res.status(404).json({ message });
+  const obj = {
+    saleId: convertedId,
+    itemsUpdated: body,
+  };
+  return res.status(200).json(obj);
+};
+
 module.exports = {
   postSales,
   getAllSales,
   getSaleById,
   deleteSaleById,
+  updateSaleById,
 };

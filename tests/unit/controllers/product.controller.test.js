@@ -37,13 +37,13 @@ describe('testes de products.controller', function () {
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(resolvedValue[0]);
   });
-  it('teste se o produto é retornados', async function () {
+  it('teste se controla exclusao de produtos', async function () {
     const res = {};
     const req = { params: { id: 4 } };
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
-    sinon.stub(productsServices, "getProductById").resolves({ message: "Product not found" });
-    await productsController.getProductById(req, res);
+    sinon.stub(productsServices, "deleteProductById").resolves({ message: "Product not found" });
+    await productsController.deleteProductById(req, res);
     expect(res.status).to.have.been.calledWith(404);
     expect(res.json).to.have.been.calledWith({ message: "Product not found" });
   });

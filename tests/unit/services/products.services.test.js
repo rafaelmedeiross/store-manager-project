@@ -26,5 +26,10 @@ describe('testes de product.services', function () {
     sinon.stub(productsModel, "getProductById").resolves(undefined);
     const getProduct = await productsServices.getProductById(4);
     expect(getProduct).to.be.deep.equal({ message: 'Product not found' });
-  })
+  });
+  it('teste se um produto especifico é deletado', async function () {
+    sinon.stub(productsModel, "deleteProductById").resolves(undefined);
+    const getDeletedProduct = await productsServices.deleteProductById(4);
+    expect(getDeletedProduct).to.be.deep.equal({ message: 'Product not found' });
+  });
 });
